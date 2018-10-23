@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
+
+$primary-color: #ffcc00;
+$text-color: #333;
+$text-font: 'Raleway', sans-serif;
+$title-font: 'Roboto', sans-serif;
+
+%uppercase {
+    text-transform: uppercase;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
+body {
+  font-family: $text-font;
+  font-size: 1.4rem;
+    line-height: 1.6;
+  background-color: #fff;
+  color: $text-color;
+  min-height: 100%;
+}
+a{
+    transition: all .5s ease-in;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.section {
+    padding: 80px 0;
+    &__heading {
+        text-align: center;
+    }
+    &__title {
+        font-size: 6rem;
+        line-height: 1.1;
+        font-weight: 900;
+        font-family: $title-font;
+        text-transform: uppercase;
+        color: $primary-color;
+        @extend %uppercase;
+        margin: 0 0 50px;
+        position: relative;
+        padding-bottom: 40px;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+        &:before {
+            display: inline-block;
+            width: 460px;
+            border-bottom: 1px solid $primary-color;
+        }
+        &:after {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            background-image: url(../img/bonfire.png);
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+    }
+    &__subtitle {
+        @extend %uppercase;
+        font-family: $text-font;
+        font-weight: 400;
+    }
+
+}
+
+@mixin border($color) {
+    border: 1px solid $color;
+}
+
+.slider {
+     position: relative;
+    &__wrap {
+       height: 100%;
+    }
+    &__item {
+        height: 100%;
+    }
+    &__arrow {
+        position: absolute;
+        width: 50px;
+        top: 0;
+        bottom: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(../img/arrow.png);
+        &--prev {left: 0;
+             &:hover, &:focus, &:active{transform:scale(1.2);}}
+        &--next {right: 0;
+                transform:rotate(180deg);
+                &:hover, &:focus, &:active{transform:rotate(180deg) scale(1.2);}
+    }
+    
+    }
+    &__dots {
+    	position: absolute;
+
+    	bottom: -40px ;
+    	left: 0;
+    	right: 0;
+    	padding: 0;
+    	margin: 0;
+    	text-align: center;
+    	li{ display: inline-block;
+    		margin: 5px;
+    		a {
+    			display: inline-block;
+                @include border ($primary-color);
+    			width: 10px;
+    			height: 10px;
+    			border-radius: 50%;
+    			background-color: $primary-color;
+    			&.active,
+    			&:hover,
+    			&:focus{
+    				background: #fff;
+    			}
+    		}
+    	}
+    }
+}
+.profile {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    &__section {
+        width: 50%;
+        padding: 80px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__section+&__section{
+        border-left: 1px solid $primary-color;
+    }
+
+    &__img {
+        @include border($primary-color);
+        width: 100%;
+        z-index:1;
+        position: relative;
+    }
+
+    &__img-wrap {
+        @include border($primary-color);
+        padding: 15px;
+        font-size: 0;
+        position: relative;
+        &:before,
+        &:after {
+            content: '';
+            
+            display: inline-block;
+            width: 101%;
+            height: 220px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: #fff;
+        }
+        &:before{
+            transform: translate(-50%,-50%) rotate(90deg);
+        }
+
+    }
+    &__name {
+        font-size: 3.6rem;
+        font-family: $title-font;
+        color: #666;
+        font-weight: bold;
+        position: relative;
+        margin-bottom: 60px;
+        &:after {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            border-bottom: 1px solid ($primary-color);
+            bottom: -30px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &__text {
+                position: relative;
+        margin-bottom: 50px;
+        &:after {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            width: 50px;
+            height: 5px;
+            background-image: linear-gradient(to right, $primary-color 0, $primary-color 20%, transparent 25%, transparent 35%, $primary-color 35%, $primary-color 65%, transparent 65%, transparent 75%, $primary-color 80% );
+            bottom: -25px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &__post{
+        font-size: 2.4rem;
+        color: #666;
+    }
+    &__link{
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        color: #666;
+        font-weight: bold;
+        @include border($primary-color);
+        text-decoration: none;
+        padding: 5px 12px;
+        display: inline-block;
+        &:hover,
+        &:focus,
+        &:active{
+            background-color: $primary-color;
+            color: #fff;
+
+        }
+    }
+    &__socials{
+        padding: 0;
+        li{
+            display: inline-block;
+            a{
+                font-size: 0.9em;
+                display: inline-block;
+                line-height: 28px;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                @include border(#ccc);
+                color: #ccc;
+                &:hover,
+                &:focus,
+                &:active{
+                background-color: $primary-color;
+                color: #fff;}
+
+            }
+        }
+    }
+}
